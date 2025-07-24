@@ -24,6 +24,7 @@ If the answer is incorrect, a message should be printed showing the correct answ
 #include <iostream>
 #include <iomanip>
 #include <string>
+#include <random>
 
 using namespace std;
 
@@ -32,18 +33,27 @@ using namespace std;
 
 int main()
 {
-    int number1, number2;
+    int number1, number2,answer;
     string numberString;
-    cout << "Enter your first number:";
-    cin >> number1;
-    cout  << "Enter your second number:";
-    cin >> number2;
+    random_device rd;
+    uniform_int_distribution<int>randomInt(0, 1000);
+    number1 = randomInt(rd);
+    number2 = randomInt(rd);
+     
     numberString = "+" + to_string(number2);
     cout << setw(15) << right << number1 << endl;
     cout << setw(15) << right << numberString << endl;
     cout << "_______________" << endl;
-    cin.ignore();
-    cout << setw(15) << right << number1 + number2 << endl;
+    cout << "When you are ready enter your answer:";
+    cin >> answer;
+    if (answer == number1 + number2)
+        cout << " You are correct";
+    else
+        cout << "Sorry the correct answers is:  " << number1 + number2;
+
+    
+    //cin.ignore();
+  //  cout << setw(15) << right << number1 + number2 << endl;
     
 }
 
