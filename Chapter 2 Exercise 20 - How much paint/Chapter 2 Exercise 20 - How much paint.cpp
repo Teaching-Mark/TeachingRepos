@@ -17,7 +17,15 @@ double const FEET_PER_GALLON = 340;
 
 int main()
 {
-    cout << round((6 * 100) / FEET_PER_GALLON) << " Gallons of paint will be needed."<<endl;
+    double height;
+    double length;
+    cout << "How high is your fence?" << endl;
+    cin >> height;
+    cout << "How long is your fence" << endl;
+    cin >> length;
+
+
+    cout << round((height * length) / FEET_PER_GALLON) << " Gallons of paint will be needed."<<endl;
      
 }
 
