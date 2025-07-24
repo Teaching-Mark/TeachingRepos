@@ -11,6 +11,7 @@ Requirements:
 */
 
 #include <iostream>
+#include <iomanip>  // to format output
 using namespace std;
 
 int main()
@@ -19,9 +20,10 @@ int main()
     int number2 = 100;
     int total = number1 + number2;
     //display results
-    cout << number1 << endl << number2 << endl;
-    cout << "________________________" << endl;
-    cout << total;
+    //using iomanip to format the output
+    cout <<setw(10)<< right<<number1 << endl << setw(10) << right<< number2 << endl;
+    cout << "__________" << endl;
+    cout << setw(10) << right << total << endl;
 
 }
 
