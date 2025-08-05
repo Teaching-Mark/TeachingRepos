@@ -34,11 +34,13 @@ using namespace std;
 #include <iomanip>
 #include <string>
 #include <random>
+#include <math.h>
 
 using namespace std;
 int main()
 {
-    double annualRate,monthlyRate, numberOfPayments, loanAmount,payment,years;
+    double annualRate,monthlyRate, loanAmount,payment;
+    int numberOfPayments, years;
     cout << "Please enter the annual interest rate ( whole number)" << endl;
     cin >> annualRate;
     cout << "Please enter the number of years for the loan ( as a decimal number)" << endl;
@@ -51,12 +53,16 @@ int main()
     
 
     payment = ((monthlyRate * pow((1 + monthlyRate), numberOfPayments)) / (pow((1 + monthlyRate), numberOfPayments) - 1)) * loanAmount;
-    cout << "Loan amount:" << loanAmount << endl;
-    cout << "Monthly Interest Rate:" << monthlyRate*100<<endl;
-    cout << "Number of Payments:" << numberOfPayments << endl;
-    cout << "Monthly Payment:" << payment << endl;
-    cout << "Amount Paid Back:" <<  payment*36 << endl;
-    cout << "Interest paid:" << (payment * 36) - loanAmount << endl;
+    // use setprecision and fixed to format numbers as currency
+    cout << setprecision(2)<<fixed;
+    // use setw and left or right to align columns
+    string sLoanAmount = "$" + to_string(std::round(loanAmount));
+    cout <<setw(25)<<left << "Loan amount:" <<setw(15) << right <<  sLoanAmount << endl;
+    cout << setw(25) << left << "Monthly Interest Rate:" << setw(15) << right << "$" <<monthlyRate*100<<endl;
+    cout << setw(25) << left << "Number of Payments:" <<    setw(15) << right  << numberOfPayments << endl;
+    cout << setw(25) << left << "Monthly Payment:" <<    setw(15) << right   <<payment << endl;
+    cout << setw(25) << left << "Amount Paid Back:" <<    setw(15) << right   <<payment*36 << endl;
+    cout << setw(25) << left << "Interest paid:" <<     setw(15) << right   <<(payment * 36) - loanAmount << endl;
 
 
 }
